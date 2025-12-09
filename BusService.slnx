@@ -1,0 +1,23 @@
+<Solution>
+  <Folder Name="/.azurepipeline/">
+    <File Path="aks-bus-service.yml" />
+  </Folder>
+  <Folder Name="/Deploy/">
+    <File Path="deploy-bus-service.sh" />
+    <File Path="install-dapr.sh" />
+  </Folder>
+  <Folder Name="/Docker/">
+    <File Path="../../../OneDrive - Orion Systems Integrators, LLC/Documents/Dockerfile" />
+  </Folder>
+  <Folder Name="/Infra/">
+    <File Path="aks-dineshdemo.bicep" />
+  </Folder>
+  <Folder Name="/K8/">
+    <File Path="bus-service-hpa.yaml" />
+    <File Path="bus-service.yaml" />
+    <File Path="dapr-pubsub-servicebus.yaml" />
+    <File Path="namespace-dineshdemo.yaml" />
+    <File Path="secret-servicebus.yaml" />
+  </Folder>
+  <Project Path="BusService/BusService.csproj" />
+</Solution>

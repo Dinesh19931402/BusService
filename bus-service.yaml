@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bus-service
+  namespace: dineshdemo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bus-service
+  template:
+    metadata:
+      labels:
+        app: bus-service
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "bus-service"
+        dapr.io/app-port: "8080"
+        dapr.io/app-protocol: "http"
+        dapr.io/log-level: "info"
+        # dapr.io/config: "dapr-config"   # (optional) if you create a global Dapr config
+    spec:
+      containers:
+        - name: bus-service
+          image: dineshdemoacr.azurecr.io/bus-service:$(Build.BuildId)
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Production"
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "500m"
+              memory: "1Gi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bus-service
+  namespace: dineshdemo
+spec:
+  selector:
+    app: bus-service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP
