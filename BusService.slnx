@@ -19,5 +19,9 @@
     <File Path="namespace-dineshdemo.yaml" />
     <File Path="secret-servicebus.yaml" />
   </Folder>
+  <Folder Name="/Readme/">
+    <File Path="../../../Documents/Introspect_Architecture_2b.pdf" />
+    <File Path="Readme.txt" />
+  </Folder>
   <Project Path="BusService/BusService.csproj" />
 </Solution>
